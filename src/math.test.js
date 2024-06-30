@@ -1,46 +1,90 @@
-// import { test } from "vitest";
-import { it, expect } from "vitest";
-// Both test and it and methods doing the same thing.
+import { it, test, expect } from "vitest";
+import {
+    sumArray,
+    findMax,
+    findMin,
+    calculateAverage,
+    isEven,
+    isOdd,
+    reverseString,
+    capitalizeFirstLetter,
+    factorial,
+    isPalindrome
+} from "./math";
 
-import  { add } from "./math"; // import the function from the file add.js
-
-// start writing test
-it('Should Summarize all number values in an array', () => {
-    //The AAA Pattern 
-
-    //Arrange
-    const numbers = [1, 2, 3]; // This is an array of numbers.
-
-    //Act
-    const result = add(numbers); // This is the function we are testing.
-
-    //Assert
-    const expectedResult = numbers.reduce( (prevValue, curValue) => prevValue + curValue, 0); // This is the expected result of
-    expect(result).toBe(expectedResult); // This is the expected result.
+// 1. Test for sumArray
+it('Should summarize all number values in an array', () => {
+    const numbers = [1, 2, 3];
+    const result = sumArray(numbers);
+    const expectedResult = numbers.reduce((sum, num) => sum + num, 0);
+    expect(result).toBe(expectedResult);
 });
 
-
-
-it('Should multiply the first two number values in an array', () => {
-    // The AAA Pattern
-
-    // Arrange
-    const numbers = [5, 3]; // This is an array of numbers.
-
-    // Act
-    const result = multiplyTwoNumbers(numbers); // This is the function we are testing.
-
-    // Assert
-    const expectedResult = numbers[0] * numbers[1]; // This is the expected result of
-    expect(result).toBe(expectedResult); // This is the expected result.
+// 2. Test for findMax
+it('Should find the maximum number in an array', () => {
+    const numbers = [1, 2, 3];
+    const result = findMax(numbers);
+    const expectedResult = Math.max(...numbers);
+    expect(result).toBe(expectedResult);
 });
 
-it('Should throw an error if the array has less than two numbers', () => {
-    // The AAA Pattern
+// 3. Test for findMin
+it('Should find the minimum number in an array', () => {
+    const numbers = [1, 2, 3];
+    const result = findMin(numbers);
+    const expectedResult = Math.min(...numbers);
+    expect(result).toBe(expectedResult);
+});
 
-    // Arrange
-    const numbers = [5]; // This is an array with only one number.
+// 4. Test for calculateAverage
+it('Should calculate the average of number values in an array', () => {
+    const numbers = [1, 2, 3];
+    const result = calculateAverage(numbers);
+    const expectedResult = sumArray(numbers) / numbers.length;
+    expect(result).toBe(expectedResult);
+});
 
-    // Act & Assert
-    expect(() => multiplyTwoNumbers(numbers)).toThrow("Array must contain at least two numbers.");
+// 5. Test for isEven
+it('Should check if a number is even', () => {
+    const number = 4;
+    const result = isEven(number);
+    expect(result).toBe(true);
+});
+
+// 6. Test for isOdd
+it('Should check if a number is odd', () => {
+    const number = 5;
+    const result = isOdd(number);
+    expect(result).toBe(true);
+});
+
+// 7. Test for reverseString
+it('Should reverse a string', () => {
+    const str = "hello";
+    const result = reverseString(str);
+    const expectedResult = str.split('').reverse().join('');
+    expect(result).toBe(expectedResult);
+});
+
+// 8. Test for capitalizeFirstLetter
+it('Should capitalize the first letter of a string', () => {
+    const str = "hello";
+    const result = capitalizeFirstLetter(str);
+    const expectedResult = str.charAt(0).toUpperCase() + str.slice(1);
+    expect(result).toBe(expectedResult);
+});
+
+// 9. Test for factorial
+it('Should calculate the factorial of a number', () => {
+    const number = 5;
+    const result = factorial(number);
+    const expectedResult = 120; // 5 * 4 * 3 * 2 * 1
+    expect(result).toBe(expectedResult);
+});
+
+// 10. Test for isPalindrome
+test('Should check if a string is a palindrome', () => {
+    const str = "madam";
+    const result = isPalindrome(str);
+    expect(result).toBe(true);
 });
