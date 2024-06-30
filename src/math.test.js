@@ -16,7 +16,7 @@ import {
 it('Should summarize all number values in an array', () => {
     const numbers = [1, 2, 3];
     const result = sumArray(numbers);
-    const expectedResult = numbers.reduce((sum, num) => sum + num, 0);
+    const expectedResult = numbers.reduce((sum, num) => sum + num, 0); // automatically get result
     expect(result).toBe(expectedResult);
 });
 
@@ -88,3 +88,4 @@ test('Should check if a string is a palindrome', () => {
     const result = isPalindrome(str);
     expect(result).toBe(true);
 });
+
